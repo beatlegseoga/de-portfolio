@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet" />
+    <title>그림 그리기 실력 테스트 결과</title>
+</head>
+<body>
+    <h1>내가 그린 그림은 "<span style="color:blue">{{animal}}</span>" 입니다.</h1>
+    <h1>나의 그림 점수는?</h1>
+    <p><span style="color:green; font-size: 300px;">{{score}}</span></p>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="controls_btns">
+        <button id="home" onclick="location.href='/';">돌아가기</button>
+    </div>
+</body>
+</html>

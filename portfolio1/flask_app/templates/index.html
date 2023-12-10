@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Project - Heart Disease</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='assets/favicon.ico') }}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet" />
+        <link href="{{ url_for('static',filename='css/form-validation.css') }}" rel="stylesheet">
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"><img src="{{ url_for('static',filename='assets/img/navbar-logo.svg') }}" alt="..." /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#services">자가진단</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#resbtn">결과확인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#api">API</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Welcome To My Project!</div>
+                <div class="masthead-heading text-uppercase">Heart Disease<br/> Self-Checking</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">진 단 시 작</a>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <form class="needs-validation" action="/result" method="post" novalidate>
+                    <div class="row g-3">
+                        <div class="text-center">
+                            <h2 class="section-heading text-uppercase">심장질환 자가진단</h2>
+                            <h3 class="section-subheading text-muted">각 항목에 알맞은 답변을 입력하세요.</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="gender" class="form-label">성별</label>
+                            <select class="form-select" id="gender" name="Sex" required>
+                                <option value="">Choose...</option>
+                                <option>남</option>
+                                <option>여</option>
+                            </select>
+                            <div class="invalid-feedback">
+                              성별을 입력해 주세요.
+                            </div>
+                        </div>
+              
+                        <div class="col-md-6">
+                            <label for="age" class="form-label">나이</label>
+                            <select class="form-select" id="age" name="AgeCategory" required>
+                              <option value="">Choose...</option>
+                              <option>80 or older</option>
+                              <option>75-79</option>
+                              <option>70-74</option>
+                              <option>65-69</option>
+                              <option>60-64</option>
+                              <option>55-59</option>
+                              <option>50-54</option>
+                              <option>45-49</option>
+                              <option>40-44</option>
+                              <option>35-39</option>
+                              <option>30-34</option>
+                              <option>25-29</option>
+                              <option>18-24</option>
+                            </select>
+                            <div class="invalid-feedback">
+                              나이를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="height" class="form-label">키 (Cm)</label>
+                            <input type="text" class="form-control" id="height" name="height" placeholder="0" value="" required>
+                            <div class="invalid-feedback">
+                                키를 입력해 주세요.
+                            </div>
+                        </div>            
+                        <div class="col-sm-6">
+                            <label for="weight" class="form-label">몸무게 (Kg)</label>
+                            <input type="text" class="form-control" id="weight" name="weight" placeholder="0" value="" required>
+                            <div class="invalid-feedback">
+                                몸무게를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="smoke" class="form-label">흡연여부 - 살면서 100가치 이상을 피운 경험</label>
+                            <select class="form-select" id="smoke" name="Smoking" required>
+                                <option value="">Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                흡연여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="drink" class="form-label">음주여부 - 1주일에 10병 이상</label>
+                            <select class="form-select" id="drink" name="AlcoholDrinking" required>
+                                <option value="">Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                음주여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="stroke" class="form-label">뇌졸중여부</label>
+                            <select class="form-select" id="stroke" name="Stroke" required>
+                                <option value="">Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                뇌졸중여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="physical" class="form-label">신체적 건강 - 지난 30일간 아픈 일수</label>
+                            <select class="form-select" id="physical" name="PhysicalHealth" required>
+                                <option value="">Choose...</option>
+                                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option>
+                                <option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option>
+                                <option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option>
+                                <option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option>
+                                <option>29</option><option>30</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                신체적 건강여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="mental" class="form-label">정신적 건강 - 지난 30일간 아픈 일수</label>
+                            <select class="form-select" id="mental" name="MentalHealth" required>
+                                <option value="">Choose...</option>
+                                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option>
+                                <option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option>
+                                <option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option>
+                                <option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option>
+                                <option>29</option><option>30</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                정신적 건강여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="walking" class="form-label">걸음이나 계단 오르기가 힘들다</label>
+                            <select class="form-select" id="walking" name="DiffWalking" required>
+                                <option value="">Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                걸음 여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="race" class="form-label">인종 선택</label>
+                            <select class="form-select" id="race" name="Race" required>
+                                <option value="">Choose...</option>
+                                <option>Asian</option>
+                                <option>Black</option>
+                                <option>Hispanic</option>
+                                <option>White</option>
+                                <option>Other</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                인종 여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="diabetes" class="form-label">당뇨병 여부</label>
+                            <select class="form-select" id="diabetes" name="Diabetic" required>
+                                <option value="">Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                당뇨병 여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="activity" class="form-label">신체 활동 - 지난 30일간 운동 등의 신체 활동 경험</label>
+                            <select class="form-select" id="activity" name="PhysicalActivity" required>
+                                <option value="">Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                신체 활동 여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="health" class="form-label">건강 정도</label>
+                            <select class="form-select" id="health" name="GenHealth" required>
+                                <option value="">Choose...</option>
+                                <option>Very good</option>
+                                <option>Good</option>
+                                <option>Excellent</option>
+                                <option>Fair</option>
+                                <option>Poor</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                건강 정도 여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="sleep" class="form-label">수면 시간 - 하루 중 평균 수면 시간</label>
+                            <select class="form-select" id="sleep" name="SleepTime" required>
+                                <option value="">Choose...</option>
+                                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option>
+                                <option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option>
+                                <option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option>
+                                <option>22</option><option>23</option><option>24</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                수면 시간 여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="asthma" class="form-label">천식 여부</label>
+                            <select class="form-select" id="asthma" name="Asthma" required>
+                                <option value="">Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                천식 여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="kidney" class="form-label">신장질환 여부</label>
+                            <select class="form-select" id="kidney" name="KidneyDisease" required>
+                                <option value="">Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                신장질환 여부를 입력해 주세요.
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="skin" class="form-label">피부질환 여부</label>
+                            <select class="form-select" id="skin" name="SkinCancer" required>
+                                <option value="">Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                피부질환 여부를 입력해 주세요.
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="text-center">
+                        <button id="resbtn" class="w-50 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                    </div>                    
+                </form>
+            </div>
+        </section> 
+        <!-- Dashboard--> 
+        <section class="page-section bg-light" id="dashboard">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">dashboard</h2>
+                    <h3 class="section-subheading text-muted">Metabase - PostgreSQL DB 연결.</h3>
+                    <a href="http://projectheartdisease.herokuapp.com/public/dashboard/b6c8c799-db0c-4272-9712-e7c578bc78bc"><h4>Go to Dashboard</h4></a>
+        <!-- API--> 
+        <section class="page-section bg-light" id="api">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">api</h2>
+                    <h3 class="section-subheading text-muted">심장질환 데이터셋 [method - get]</h3>
+                    <h4>http://project-sec3-api.herokuapp.com/api</h4>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{{ url_for('static',filename='js/scripts.js') }}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="{{ url_for('static',filename='js/form-validation.js') }}"></script>
+    </body>
+</html>

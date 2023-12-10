@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet" />
+    <title>그림 그리기 실력 테스트</title>
+</head>
+<body>
+    <h1>나의 그림 그리기 실력은?</h1>
+    <h1># "<span style="color:blue">{{animal}}</span>" 그리기</h1>
+    <canvas id="canvas" class="canvas"></canvas>
+    <div class="controls">
+        <div class="controls_colors" id="colors">
+            <div class="controls_color color" style="background-color: black;"></div>
+            <div class="controls_color color" style="background-color: white;"></div>
+        </div>
+        <div class="controls_btns">
+            <button id="save">확 인</button>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static',filename='js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</body>
+</html>
